@@ -8,13 +8,9 @@ class CustomGalleryFolderViewModel(application: Application) : AndroidViewModel(
     val repository: CustomGalleryRepository = CustomGalleryRepository(application)
 
     fun getFolders(type: Int) { repository.getFolders(type) }
-    fun getFiles(type: Int, bucketId: String) { repository.getFiles(type, bucketId) }
-    fun updateFile(file: CustomGallery) {
-        repository.updateFile(file)
-    }
+    fun getFiles(type: Int, bucketId: String, selectedFiles: MutableList<String> = ArrayList()) { repository.getFiles(type, bucketId, selectedFiles) }
 
-    fun getFiles(): LiveData<List<CustomGallery>> = repository.getFiles()
-    fun getFolders(): LiveData<List<CustomGalleryFolder>> = repository.getFolders()
-    fun getFolderNames(): LiveData<List<String>> = repository.getFolderNames()
-    fun getUpdatedFile(): LiveData<CustomGallery> = repository.getUpdatedFile()
+    fun getFiles(): LiveData<MutableList<CustomGallery>> = repository.getFiles()
+    fun getFolders(): LiveData<MutableList<CustomGalleryFolder>> = repository.getFolders()
+    fun getFolderNames(): LiveData<MutableList<String>> = repository.getFolderNames()
 }
