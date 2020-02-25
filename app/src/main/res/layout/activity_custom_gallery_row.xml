@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/galleryStorageFrame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/galleryStorageImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/icon"
+        app:layout_constraintDimensionRatio="H,1:1"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/galleryStorageIconPlay"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/icon"
+        android:src="@drawable/ic_play"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/galleryStorageSelect"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/icon"
+        android:src="@drawable/check_media"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/galleryStorageImage"
+        app:layout_constraintTop_toTopOf="@+id/galleryStorageImage" />
+
+    <View
+        android:id="@+id/galleryStorageOverlay"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:alpha="0.2"
+        android:background="@android:color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/galleryStorageSelect"
+        app:layout_constraintStart_toStartOf="@+id/galleryStorageImage"
+        app:layout_constraintTop_toTopOf="@+id/galleryStorageImage" />
+
+    <ImageView
+        android:id="@+id/galleryStorageIconVideo"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:contentDescription="@string/icon"
+        android:src="@drawable/ic_videocam_white"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/galleryStorageDurationVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/galleryStorageIconVideo"
+        app:layout_constraintStart_toEndOf="@+id/galleryStorageIconVideo"
+        app:layout_constraintTop_toTopOf="@+id/galleryStorageIconVideo"
+        tools:ignore="SmallSp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
