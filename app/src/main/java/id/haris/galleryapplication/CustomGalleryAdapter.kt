@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class CustomGalleryAdapter : RecyclerView.Adapter<CustomGalleryAdapter.ViewHolder>() {
-    private var models: List<CustomGallery>? = null
+    private var models: MutableList<CustomGallery>? = null
     private var onClickListener: OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -18,15 +18,12 @@ class CustomGalleryAdapter : RecyclerView.Adapter<CustomGalleryAdapter.ViewHolde
         return ViewHolder(view)
     }
 
-    fun updateModel(model: CustomGallery) {
-        val index = models?.indexOf(model)
-        if (index != -1) {
-            models?.get(index!!)?.copy(select = model.select)
-            notifyItemChanged(index!!)
-        }
+    fun updateModel(position: Int, model: CustomGallery) {
+        models?.set(position, model)
+        notifyItemChanged(position)
     }
 
-    fun setModel(models: List<CustomGallery>) {
+    fun setModel(models: MutableList<CustomGallery>) {
         this.models = models
         notifyDataSetChanged()
     }
@@ -65,7 +62,7 @@ class CustomGalleryAdapter : RecyclerView.Adapter<CustomGalleryAdapter.ViewHolde
                 holder.overlay.setVisibility(View.VISIBLE)
                 holder.duration.setText(model.duration)
                 Glide.with(holder.itemView.context).load(model.path)
-                    .placeholder(holder.itemView.context.getDrawable(R.drawable.broken_image))
+                    .error(holder.itemView.context.getDrawable(R.drawable.broken_image))
                     .into(holder.image)
             } else {
                 holder.iconPlay.setVisibility(View.GONE)
@@ -73,7 +70,7 @@ class CustomGalleryAdapter : RecyclerView.Adapter<CustomGalleryAdapter.ViewHolde
                 holder.iconVideo.setVisibility(View.GONE)
                 holder.overlay.setVisibility(View.GONE)
                 Glide.with(holder.itemView.context).load(model.path)
-                    .placeholder(holder.itemView.context.getDrawable(R.drawable.broken_image))
+                    .error(holder.itemView.context.getDrawable(R.drawable.broken_image))
                     .into(holder.image)
             }
 
